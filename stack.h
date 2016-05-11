@@ -1,23 +1,12 @@
-#ifndef STACK_H
-#define STACK_H
-
-typedef struct stack
-{
+struct Stack {
 	#if PLATFORM == PLATFORM_WIN
-		#include <windows.h>
 		HANDLE hand;
 	#else
-		#include <unistd.h>
-		#include <sys/types.h>
 		pid_t pid;
 	#endif
-
-	stack* next;
-
-	void push();
-	void pop();
-	void init();
-	void destroy();
+		struct Stack *next;
 };
 
-#endif
+int size(const struct  Stack *);
+void push(struct Stack **, struct Data);
+void pop(struct Stack **);

@@ -1,18 +1,33 @@
-#include <stdio.h>
-#include "header.h"
+#include "headers.h"
 
-
-int main()
+int main(int argc, char *argv[])
 {
-	char ch;
-	stack st;
-	while (1s)
+	struct Stack *stack = NULL;
+	struct Data data;
+	if (argc == 1)
 	{
-		switch (ch=getchar())
+		createSignalProcess(argv[0], &data);
+
+		while (1)
 		{
-			case '+' : break;
-			case '-' : break;
-			case 'q' : return 0;
+			switch (_getch())
+			{
+			case '+':
+				createNewProcess(argv[0], &data, &stack);
+				break;
+			case '-':
+				if (size(stack) != 0)
+					closeLastProcess(&stack, &data);
+				break;
+			case 'q':
+				closeAllProcesses(&stack, &data);
+				return 0;
+				break;
+			}
 		}
 	}
+	else
+		printProcesses(argv, &data);
+
+	return 0;
 }

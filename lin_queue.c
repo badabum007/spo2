@@ -1,11 +1,12 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
-#include "stack.h"
+#include "queue.h"
 
-typedef struct stack
+typedef struct queue
 {
 	char str[]="Hello world!\n";
+	queue *tail, *head;
 	void push()
 	{
 		if (next == NULL)
@@ -15,25 +16,18 @@ typedef struct stack
 			{
 				case -1:puts"Error creating child");break;
 				case 0:
-				if (next == NULL)
-					pid = pid_temp;
+				if (next = 0)
+					queue element;
+					element.next = element;
+					head = element;
+					tail = element;
+					element.pid = pid_temp;
 				else 
 				{
-					stack element;
-					element.pid = pid;
+					queue element;
+					element.pid = pid_temp;
 					element.next = *next;
-					next = element.next;
-					pid = pid_temp;
-				}
-				while (1)
-				{
-					int i = 0;
-					do 
-					{
-						while (str[i]!='\0')
-							printf("%c",str[i]);
-					}
-					// pause
+					head = element;
 				}
 				break;
 			}
@@ -42,13 +36,17 @@ typedef struct stack
 
 	void pop()
 	{
-		pid = next.pid;
-		next = next.next;
+		if (head != 0)
+			head = head.next;
+		else 
+			tail = 0;
 	};
 
 	void init()
-	{
-		next = NULL;
+	{	
+		tail = 0;
+		head = 0;
+		next = 0;
 		pid = -1;
 	};
 	
